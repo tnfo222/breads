@@ -13,7 +13,6 @@ function Default(html){
                 </div>
             </body>
         </html>
-
     )
 }
 module.exports = Default
