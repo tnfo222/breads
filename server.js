@@ -14,13 +14,12 @@ app.use(express.static('public'))
 
 // ROUTES
 app.get('/', (req, res) => {
-    res.send('Welcome to an Awesome App about Breads')
-  })
-  
+  res.send('Welcome to an Awesome App about Breads')
+})
+
 // Breads
 const breadsController = require('./controllers/breads_controller.js')
-app.use('./breads', breadsController)
-  
+app.use('/breads', breadsController)
 
 //Listen
 app.listen(PORT, () => {
