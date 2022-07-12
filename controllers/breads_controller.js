@@ -17,6 +17,15 @@ breads.get('/new', (req, res) => {
   res.render('new')
 })
 
+
+// EDIT
+breads.get('/:indexArray/edit', (req, res) => {
+  res.render('edit', {
+    bread: Bread[req.params.indexArray],
+    index: req.params.indexArray
+  })
+})
+
 // SHOW
 breads.get('/:arrayIndex', (req, res) => {
   if (Bread[req.params.arrayIndex]) {
@@ -27,14 +36,6 @@ breads.get('/:arrayIndex', (req, res) => {
   } else {
     res.send('404')
   }
-})
-
-// EDIT
-breads.get('/:indexArray/edit', (req, res) => {
-  res.render('edit', {
-    bread: Bread[req.params.indexArray],
-    index: req.params.indexArray
-  })
 })
 
 // UPDATE
@@ -64,8 +65,12 @@ breads.post('/', (req, res) => {
 
 // DELETE
 breads.delete('/:indexArray', (req, res) => {
-  Bread.splice(req.params.indexArray, 1)
-  res.status(303).redirect('/breads')
+  Bread.findByIdAndDelete(req.params.id)
+    .then(deletedBread => {
+      res.status(303).redirect('/breads')
+    })
+  //Bread.splice(req.params.indexArray, 1)
+  //res.status(303).redirect('/breads')
 })
 
 module.exports = breads
