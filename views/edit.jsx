@@ -1,11 +1,11 @@
 const React = require('react')
-const Default = require('./layouts/Default')
+const Default = require('./layouts/default')
 
 function Edit ({bread, index}) {
     return (
       <Default>
         <h2>Edit a bread</h2>
-        <form >
+        <form action={`/breads/${bread.id}?_method=PUT`} method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -34,3 +34,4 @@ function Edit ({bread, index}) {
       </Default>
     )
 }
+module.exports = Edit
