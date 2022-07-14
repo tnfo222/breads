@@ -5,7 +5,7 @@ function New ({bakers}) {
     return (
       <Default>
         <h2>Add a new bread</h2>
-        <form action = "/breads" method="POST">
+        <form action="/breads" method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -18,6 +18,14 @@ function New ({bakers}) {
             type="text"
             name="image"
             id="image"/>
+            <label htmlFor="baker">Baker</label>
+            <select name="baker" id="baker">
+              {bakers.map((baker) => {
+                return(
+                  <option value={baker.id} key={baker.id}>{baker.name}</option>
+                )
+              })}
+            </select>
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"
@@ -25,14 +33,6 @@ function New ({bakers}) {
             id="hasGluten"
             defaultChecked
           />
-          <label htmlFor="baker">Baker</label>
-          <select name="baker" id="baker">
-            {bakers.map((baker) => {
-              return(
-                <option value={baker.id} key={baker.id}>{baker.name}</option>
-              )
-            })}
-          </select>
           <br />
           <input type="submit"/>
         </form>
@@ -41,4 +41,3 @@ function New ({bakers}) {
 }
 
 module.exports = New
-
