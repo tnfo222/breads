@@ -1,7 +1,7 @@
 const React = require('react')
-const Default = require('./layouts/default')
+const Default = require('./layouts/default.jsx')
 
-function Show ({bread, bakedBy}) {
+function Show ({bread,index}) {
   // confirm we are getting our bread data in terminal
   // console.log(bread.name)
     return (
@@ -17,9 +17,8 @@ function Show ({bread, bakedBy}) {
           have gluten.
         </p>
         <img src={bread.image} alt={bread.name} />
-        <p>{bread.getBakedBy()}</p>
-        <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
-        <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
+        <a href={`/breads/${index}/edit`}><button>Edit</button></a>
+        <form action={`/breads/${index}?_method=DELETE`} method="POST">
           <input type='submit' value="DELETE"/>
         </form>
 

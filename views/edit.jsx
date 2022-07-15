@@ -1,11 +1,11 @@
 const React = require('react')
-const Default = require('./layouts/Default')
+const Default = require('./layouts/default.jsx')
 
-function Edit ({bread, bakers}) {
+function Edit ({bread, index}) {
     return (
       <Default>
         <h2>Edit a bread</h2>
-        <form action={`/breads/${bread.id}?_method=PUT`} method="POST">
+        <form action={`/breads/${index}?_method=PUT`} method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -21,14 +21,6 @@ function Edit ({bread, bakers}) {
             id="image"
             defaultValue={bread.image}
           />
-          <label htmlFor="baker">Baker</label>
-          <select name="baker" id="baker" defaultValue={bread.baker}>
-            {bakers.map((baker) => {
-              return(
-                <option value={baker.id} key={baker.id}>{baker.name}</option>
-              )
-            })}
-          </select>
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"
