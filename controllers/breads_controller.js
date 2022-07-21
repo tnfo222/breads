@@ -8,7 +8,6 @@ const breadSeedData = require('../models/seed.js')
 breads.get('/', async (req, res) => {
   const foundBakers = await Baker.find().lean()
   const foundBreads = await Bread.find().limit(2).lean()
-  console.log(foundBreads)
     res.render('index', {
       breads: foundBreads,
       bakers: foundBakers,
@@ -64,7 +63,6 @@ breads.put('/:id', (req, res) => {
   }
   Bread.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(updatedBread => {
-      conosle.log(updatedBread)
       res.redirect(`/breads/${req.params.id}`)
     })
 })
