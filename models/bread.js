@@ -7,17 +7,13 @@ const { Schema } = mongoose
 const breadSchema = new Schema({
   name: { type: String, required: true },
   hasGluten: Boolean,
-  image: { type: String, default: 'http://placehold.it/500x500.png' },
-  baker: {
-    type: Schema.Types.ObjectId,
-    ref: 'Baker'
-  }
+  image: { type: String, default: 'https://picsum.photos/500/500' },
 })
 
 //helper methods (instance)
-breadSchema.methods.getBakedBy = function() {
-  return `${this.name} was baked with love by ${this.baker}`
-}
+//breadSchema.methods.getBakedBy = function() {
+//  return `${this.name} was baked with love by ${this.baker}`
+//}
 
 // model and export 
 const Bread = mongoose.model('Bread', breadSchema)
