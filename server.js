@@ -20,7 +20,7 @@ app.engine('jsx', require('express-react-views').createEngine())
 
 // ROUTES
 app.get('/', (req, res) => {
-  res.send('Index')
+  res.render('Index')
 })
 
 // Breads
